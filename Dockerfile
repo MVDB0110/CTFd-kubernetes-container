@@ -1,7 +1,6 @@
 FROM ubuntu:focal
 
 COPY entrypoint.sh ./entrypoint.sh
-        entrypoint.sh
 
 RUN RUN chmod +x entrypoint.sh
 RUN RUN apt update  \
