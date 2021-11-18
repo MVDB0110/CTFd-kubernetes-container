@@ -2,18 +2,12 @@
 
 ## Variables
 [ -z "$FILE" ] && echo $timestamp "$FILE is not defined." || echo $timestamp "$FILE is defined as file."
-[ -z "$URI" ] && echo $timestamp "$URI is not defined." || echo $timestamp "$URI is defined as URI."
+[ -z "$ENCODED" ] && echo $timestamp "$ENCODED is not defined." || echo $timestamp "$ENCODED is defined."
 timestamp=$(date +%s)
 
-## Get file
-#Checks
-if ! command -v curl &> /dev/null
-then
-    echo "The curl binary could not be found"
-    exit
-fi
+## Convert base64 encoded compose to file
 #Commands
-curl -L $URI -o $FILE
+echo $ENCODED | base64 --decode > $FILE
 
 ## Generate HELM Chart
 # Checks
